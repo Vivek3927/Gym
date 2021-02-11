@@ -1,0 +1,88 @@
+<div class="container">
+  <div class="col-md-6 mx-auto">
+    <div class="card">
+      <h2 class="card-header text-center">Register</h2>
+      <div class="card-body">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= render "users/shared/error_messages", resource: resource %>
+          <form>
+            <div class="form-group">
+              <div class="row justify-content-between">
+                <div class="col-md-6">
+                  <%= f.label :first_name %>
+                  <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-control" %>
+                </div>
+                <div class="col-md-6">  
+                  <%= f.label :last_name %>
+                  <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "form-control" %>
+                </div>  
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="row justify-content-between">
+                <div class="col-md-6">
+                  <%= f.label :date_of_birth %><br />
+                  <%= f.date_field :date_of_birth, autofocus: true, autocomplete: "date_of_birth", class: "form-control" %>
+                </div>
+                <div class="col-md-6">
+                  <%= f.label :contact %><br />
+                  <%= f.text_field :contact, autofocus: true, autocomplete: "contact", class: "form-control" %>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="row justify-content-between">
+                <div class="col-md-6">
+                  <%= f.label :timing %>
+                  <span class="option form-check p-1">Morning<span><%= f.radio_button :timing, "M"%>
+                    <span class="option ml-2">Evening<span><%= f.radio_button :timing, "E" %>
+                </div>
+                <div class="col-md-6">
+                  <%= f.label :gender %></br>
+                  <span class="option form-check p-1">Male<span><%= f.radio_button :gender, "m" %>
+                  <span class="option ml-2">Female<span><%= f.radio_button :gender, "f" %>
+                </div>    
+              </div>
+            </div>  
+
+            <div class="form-group">
+              <%= f.label :address %><br />
+              <%= f.text_area :address, autofocus: true, autocomplete: "address", rows: "2", class: "form-control" %>
+            </div>            
+
+
+            <div class="form-group">
+              <%= f.label :email %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :password %>
+              <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <% end %>
+              <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :password_confirmation %>
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+            </div>
+
+            <div class="">
+              <%= f.label :terms %><br/>
+              <%= f.check_box :terms, autofocus: true, autocomplete: "terms" %>
+            </div>  
+
+            <div class="actions">
+              <%= f.submit "Sign up", class: "btn btn-block btn-success" %>
+            </div>
+          </form>
+        <% end %>
+        <%= render "users/shared/links" %>
+      </div>  
+    </div>
+  </div>
+</div>
